@@ -34,6 +34,7 @@ impl Default for CfgLinuxOptions {
             linux_x11_repeat_delay_rate: None,
             linux_use_trackpoint_property: false,
             linux_output_bus_type: LinuxCfgOutputBusType::BusI8042,
+            linux_enable_mouse: bool,
         }
     }
 }
