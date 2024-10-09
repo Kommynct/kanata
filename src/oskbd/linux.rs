@@ -238,9 +238,12 @@ pub fn is_input_device(device: &Device) -> bool {
     let is_keyboard = device
         .supported_keys()
         .map_or(false, |keys| keys.contains(Key::KEY_ENTER));
-    let is_mouse = device
+    let is_mouse = if config.input.enable_mouse { device
         .supported_relative_axes()
         .map_or(false, |axes| axes.contains(RelativeAxisType::REL_X));
+                                                } else {
+        return false;
+    };
     if is_keyboard || is_mouse {
         if device.name() == Some("kanata") {
             return false;
